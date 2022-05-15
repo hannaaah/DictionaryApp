@@ -20,7 +20,7 @@ class NoResults extends StatelessWidget {
               height: 50,
             ),
             Text(
-              "OOPS...!",
+              "OOPS !",
               style: GoogleFonts.poppins(
                   textStyle:
                       const TextStyle(color: Color(0xffFFFFFF), fontSize: 23)),

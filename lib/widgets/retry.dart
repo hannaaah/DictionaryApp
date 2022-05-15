@@ -14,8 +14,7 @@ class RetryButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 35),
       child: TextButton(
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Home()));
+           Navigator.pop(context);
         },
         child: Text(
           "RETRY",

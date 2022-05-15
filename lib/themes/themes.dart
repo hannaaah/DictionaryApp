@@ -4,6 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 class Themes {
   static Color green = const Color(0xff99B999);
   static Color bg = const Color(0xff27363B);
+  static TextStyle word(double size) {
+    return GoogleFonts.notoSerifDisplay(
+        textStyle: TextStyle(color: Colors.white, fontSize: size));
+  }
+
   static TextStyle subhead = GoogleFonts.poppins(
       textStyle: const TextStyle(color: Color(0xff869EA5), fontSize: 16));
   static TextStyle buttontext = GoogleFonts.poppins(

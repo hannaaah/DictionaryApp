@@ -1,6 +1,5 @@
 import 'package:dictionary/themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Result extends StatelessWidget {
   String word;
@@ -43,9 +42,7 @@ class Result extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(word,
-                          style: GoogleFonts.notoSerifDisplay(
-                              color: Colors.white, fontSize: 40)),
+                      Text(word, style: Themes.word(40)),
                       const SizedBox(
                         height: 12,
                       ),

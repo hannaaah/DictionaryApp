@@ -1,12 +1,13 @@
 import 'package:dictionary/pages/noInternet.dart';
+import 'package:dictionary/pages/noResult.dart';
 import 'package:dictionary/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
+import '../controller/controller.dart';
 import 'result.dart';
 
 class Home extends StatelessWidget {
-  static bool exists = true;
+  static bool notexists = true;
   static bool nonet = false;
 
   final TextEditingController word = TextEditingController();
@@ -27,9 +28,7 @@ class Home extends StatelessWidget {
             children: [
               Text(
                 "Dictionary",
-                style: GoogleFonts.notoSerifDisplay(
-                    textStyle:
-                        const TextStyle(color: Colors.white, fontSize: 50)),
+                style: Themes.word(50),
               ),
               const SizedBox(height: 24),
               Text(" Search",
@@ -54,19 +53,27 @@ class Home extends StatelessWidget {
                       contentPadding: const EdgeInsets.all(12),
                       suffixIcon: GestureDetector(
                         onTap: () async {
-                          await _checkConnectivityState();
+                          await Controller.checkConnectivityState();
                           if (Home.nonet) {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const NoInternet()));
                           } else {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Result(
-                                          word: word.text,
-                                        )));
+                            await Controller.checkResult(word.text);
+                            if (Home.notexists) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const NoResults()));
+                            } else {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Result(
+                                            word: word.text,
+                                          )));
+                            }
                           }
                         },
                         child: Icon(
@@ -85,12 +92,4 @@ class Home extends StatelessWidget {
       ]),
     );
   }
-}
-
-Future<void> _checkConnectivityState() async {
-  final ConnectivityResult result = await Connectivity().checkConnectivity();
-  if (result == ConnectivityResult.none)
-    Home.nonet = true;
-  else
-    Home.nonet = false;
 }
