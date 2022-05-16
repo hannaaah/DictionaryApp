@@ -70,9 +70,7 @@ class Home extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Result(
-                                            word: word.text,
-                                          )));
+                                      builder: (context) => Result()));
                             }
                           }
                         },
