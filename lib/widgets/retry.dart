@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../pages/home.dart';
 import '../themes/themes.dart';
 
 class RetryButton extends StatelessWidget {
@@ -14,7 +13,7 @@ class RetryButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 35),
       child: TextButton(
         onPressed: () {
-           Navigator.pop(context);
+          Navigator.pop(context);
         },
         child: Text(
           "RETRY",

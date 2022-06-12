@@ -1,3 +1,4 @@
+import 'package:dictionary/controller/controller.dart';
 import 'package:dictionary/themes/themes.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +10,8 @@ class Result extends StatelessWidget {
   );
   static List<dynamic> model = [];
 
-  int noOfPartsOfSpeech = model[0]['meanings'].length;
-  String phonetic = model[0]['phonetic'];
+  final int noOfPartsOfSpeech = model[0]['meanings'].length;
+  final bool no = model[0]['phonetic'] == null;
 
   Result({Key? key}) : super(key: key);
 
@@ -56,13 +57,20 @@ class Result extends StatelessWidget {
                       const SizedBox(
                         height: 12,
                       ),
-                      Row(children: [
-                        (Text(model[0]['phonetic'], style: Themes.greenhead)),
-                        const SizedBox(width: 20),
-                        GestureDetector(
-                            onTap: (() {}),
-                            child: Image.asset("assets/images/voice.png"))
-                      ]),
+                      no
+                          ? const SizedBox(
+                              height: 0.2,
+                            )
+                          : Row(children: [
+                              (Text(model[0]['phonetic'],
+                                  style: Themes.greenhead)),
+                              const SizedBox(width: 20),
+                              GestureDetector(
+                                  onTap: (() {
+                                    Controller.getAudio();
+                                  }),
+                                  child: Image.asset("assets/images/voice.png"))
+                            ]),
                       const SizedBox(
                         height: 25,
                       ),
@@ -82,10 +90,6 @@ class Result extends StatelessWidget {
                               const SizedBox(
                                 height: 10,
                               ),
-                              // Text("DEFINITION", style: Themes.greenhead),
-                              // const SizedBox(
-                              //   height: 7,
-                              // ),
                               ListView.builder(
                                   physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,

@@ -1,9 +1,4 @@
-import 'dart:ui';
-
 import 'package:dictionary/pages/home.dart';
-import 'package:dictionary/pages/noInternet.dart';
-import 'package:dictionary/pages/noResult.dart';
-import 'package:dictionary/pages/result.dart';
 import 'package:flutter/material.dart';
 
 void main() {

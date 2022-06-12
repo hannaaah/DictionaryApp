@@ -37,6 +37,7 @@ dependencies:
   google_fonts: any
   http: ^0.13.4
   connectivity_plus: ^1.0.6
+  audioplayers: ^0.20.1
 
 
 
