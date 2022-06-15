@@ -11,8 +11,10 @@ class Result extends StatelessWidget {
   static List<dynamic> model = [];
 
   final int noOfPartsOfSpeech = model[0]['meanings'].length;
-  final bool no = model[0]['phonetic'] == null;
-
+  final bool noPhonetic = model[0]['phonetic'] == null;
+  final bool noAudio = model[0]['phonetics'] != null
+      ? (model[0]['phonetics'][0]['audio'] == "" ? true : false)
+      : true;
   Result({Key? key}) : super(key: key);
 
   @override
@@ -57,7 +59,7 @@ class Result extends StatelessWidget {
                       const SizedBox(
                         height: 12,
                       ),
-                      no
+                      (noPhonetic || noAudio)
                           ? const SizedBox(
                               height: 0.2,
                             )

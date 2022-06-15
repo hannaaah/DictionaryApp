@@ -31,7 +31,7 @@ class Controller {
     AudioPlayer audioPlayer = AudioPlayer();
     try {
       var url = Result.model[0]['phonetics'][0]['audio'];
-      var res = await audioPlayer.play(url, isLocal: true);
+      var res = await audioPlayer.play(url);
       if (res == 1) print("Playing...");
     } on Exception catch (e) {
       print("Cant play!!");
