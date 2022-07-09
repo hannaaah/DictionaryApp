@@ -24,13 +24,13 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Themes.bg,
-      body: Center(
-        child: Text(
-          "Dictionary",
-          style: Themes.word(50),
-        ),
-      ),
-    );
+        backgroundColor: Themes.bg,
+        body: SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Image.asset("assets/images/d1.png")),
+        ));
   }
 }
